@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FeedTab extends StatelessWidget {
-  FeedTab();
+class SupportTab extends StatelessWidget {
+  SupportTab();
 
   @override
   Widget build(BuildContext context) {

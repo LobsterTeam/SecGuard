@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'home/navigation.dart';
-import 'notification/notification.dart';
+import 'navigation.dart';
+import 'status/status.dart';
 
 void main() => runApp(SecGuard());
 
 class SecGuard extends StatelessWidget {
-  bool notification = false;  // TODO: check if it is notification
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SecGuard',
-      home: notification ? NotificationPage() : Navigation(),
+      home: Navigation(),
       theme: ThemeData(
-        primaryColor: Color(0xff922b3e),  // appbar color
+        primaryColor: Color(0xff922b3e), // appbar color
       ),
     );
   }

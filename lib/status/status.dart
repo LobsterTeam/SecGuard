@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:sec_guard/notification/notification_service.dart';
 
-class NotificationPage extends StatefulWidget {
-  NotificationPage(
+class StatusTab extends StatefulWidget {
+  StatusTab(
       {Key key,
       this.androidVersion,
       this.vendorPatchLevel,
@@ -17,19 +15,19 @@ class NotificationPage extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _NotificationState();
+    return _StatusState();
   }
 }
 
-class _NotificationState extends State<NotificationPage> {
-  NotificationService notificationService = new NotificationService();
+class _StatusState extends State<StatusTab> {
+  //NotificationService notificationService = new NotificationService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         // backgroundColor: Colors.black87,
         body: Center(
-      /// padding: EdgeInsets.all(16.0),
+      // padding: EdgeInsets.all(16.0),
       child: FutureBuilder(
         future:
             DefaultAssetBundle.of(context).loadString("assets/android.json"),
@@ -43,16 +41,12 @@ class _NotificationState extends State<NotificationPage> {
               if (parsed["Framework"][i][3] == "Critical" &&
                   parsed["Framework"][i][4].contains("9")) {
                 String key = parsed["Framework"][i][0];
-                Map<String, String> map = {
-                  key: parsed["Framework"][i][2]
-                };
+                Map<String, String> map = {key: parsed["Framework"][i][2]};
                 criticalErrorList.add(map);
               } else if (parsed["Framework"][i][3] == "High" &&
                   parsed["Framework"][i][4].contains("9")) {
                 String key = parsed["Framework"][i][0];
-                Map<String, String> map = {
-                  key: parsed["Framework"][i][2]
-                };
+                Map<String, String> map = {key: parsed["Framework"][i][2]};
                 highErrorList.add(map);
               }
             }
@@ -60,27 +54,25 @@ class _NotificationState extends State<NotificationPage> {
             print(highErrorList);
             String s = "8.0, 8.1, 9";
             print(s.contains("9"));
-          } else {
-
-          }
+          } else {}
           return Container();
         },
       ),
       /*Column(
-              children: [
-            // TODO the second parameter will be replaced with widget.androidVersion
-            customCard("Android Version", "9"),
-            // TODO the second parameter will be replaced with widget.vendorPatchLevel
-            customCard("Vendor security patch level", "01 September 2020"),
-            // TODO the second parameter will be replaced with widget.androidPatchLevel
-            customCard("Android security patch level", "01 October 2020"),
+                children: [
+              // TODO the second parameter will be replaced with widget.androidVersion
+              customCard("Android Version", "9"),
+              // TODO the second parameter will be replaced with widget.vendorPatchLevel
+              customCard("Vendor security patch level", "01 September 2020"),
+              // TODO the second parameter will be replaced with widget.androidPatchLevel
+              customCard("Android security patch level", "01 October 2020"),
 
-            // TODO FutureBuilder widget will be here
+              // TODO FutureBuilder widget will be here
 
-                Align(
-                    alignment: Alignment.bottomLeft,
-                    child: customRaisedButton("Contact"))
-              ]),*/
+                  Align(
+                      alignment: Alignment.bottomLeft,
+                      child: customRaisedButton("Contact"))
+                ]),*/
     ));
   }
 
