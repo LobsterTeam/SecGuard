@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'navigation.dart';
-import "package:system_info/system_info.dart";
+import 'package:system_info/system_info.dart';
+import 'utils/theme.dart';
 
 void main() {
   processorCheck();
@@ -14,7 +15,7 @@ class SecGuard extends StatelessWidget {
       title: 'SecGuard',
       home: Navigation(),
       theme: ThemeData(
-        primaryColor: Color(0xff922b3e), // appbar color
+        primaryColor: ThemeColors.redViolet, // appbar color
       ),
     );
   }

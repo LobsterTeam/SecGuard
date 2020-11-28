@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'theme.dart';
 
 AppBar app_bar(){
   return AppBar(
     title: Center(
       child: Text(
         'SecGuard',
-        style: TextStyle(
-          color: Colors.white,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w600,
-          fontSize: 30.0
-        )
+        style: ThemeTextStyles.appBarTitle,
       )
     ),
-    backgroundColor: Color(0xff922b3e),
+    backgroundColor: ThemeColors.redViolet,
   );
 }
