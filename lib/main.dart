@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'navigation.dart';
-import 'package:system_info/system_info.dart';
+import 'package:device_info/device_info.dart';
 import 'utils/theme.dart';
 
 void main() {
-  processorCheck();
   runApp(SecGuard());
+  processorCheck();
 }
 
 class SecGuard extends StatelessWidget {
@@ -21,13 +21,16 @@ class SecGuard extends StatelessWidget {
   }
 }
 
-void processorCheck() {
-  var processors = SysInfo.processors;
-  print("Number of processors    : ${processors.length}");
-  for (var processor in processors) {
-    print("  Architecture          : ${processor.architecture}");
-    print("  Name                  : ${processor.name}");
-    print("  Socket                : ${processor.socket}");
-    print("  Vendor                : ${processor.vendor}");
-  }
+Future<void> processorCheck() async {
+  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin(); // instantiate device info plugin
+  AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo; // instantiate Android Device Information
+  var board = androidDeviceInfo.board; //this will return you device model name
+  var manufacturer = androidDeviceInfo.manufacturer;
+  var model = androidDeviceInfo.model;
+  var hardware = androidDeviceInfo.hardware;
+
+  print("board: " + board);
+  print("manufacturer " + manufacturer);
+  print("model " + model);
+  print("hardware " + hardware);
 }
