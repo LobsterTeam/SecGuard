@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:sec_guard/utils/app_bar.dart';
 
 class StatusTab extends StatefulWidget {
   StatusTab(
@@ -20,40 +21,30 @@ class StatusTab extends StatefulWidget {
 }
 
 class _StatusState extends State<StatusTab> {
-  //NotificationService notificationService = new NotificationService();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         // backgroundColor: Colors.black87,
         body: Center(
-      // padding: EdgeInsets.all(16.0),
       child: FutureBuilder(
         future:
             DefaultAssetBundle.of(context).loadString("assets/android.json"),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            final parsed = jsonDecode(snapshot.data);
-            List<Map<String, String>> criticalErrorList = List();
-            List<Map<String, String>> highErrorList = List();
 
-            for (int i = 0; i < parsed["Framework"].length; i++) {
-              if (parsed["Framework"][i][3] == "Critical" &&
-                  parsed["Framework"][i][4].contains("9")) {
-                String key = parsed["Framework"][i][0];
-                Map<String, String> map = {key: parsed["Framework"][i][2]};
-                criticalErrorList.add(map);
-              } else if (parsed["Framework"][i][3] == "High" &&
-                  parsed["Framework"][i][4].contains("9")) {
-                String key = parsed["Framework"][i][0];
-                Map<String, String> map = {key: parsed["Framework"][i][2]};
-                highErrorList.add(map);
-              }
-            }
-            print(criticalErrorList);
-            print(highErrorList);
-            String s = "8.0, 8.1, 9";
-            print(s.contains("9"));
+            /** system - FF0000
+                google_play_system_updates - FFA500
+                android_runtime - ffae42
+                mediatek veya qualcomm - FFFF00
+                framework - 9acd32
+                media_framework - 008000
+             * */
+            //print(jsonDecode(snapshot.data));
+            final parsed = jsonDecode(snapshot.data);
+            List<Map<String, String>> errorTypeMaps = List();
+
+            print(parsed);
+
           } else {}
           return Container();
         },
