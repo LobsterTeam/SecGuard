@@ -76,7 +76,7 @@
       "0": {
         "name": "Permission Controller",
         "code": "CVE-2020-0418",
-        "detailed_description": "In getPermissionInfosForGroup of Utils.java, there is a logic error. This could lead to local escalation of privilege with User execution privileges needed. User interaction is not needed for exploitation"
+        "detailed_description": "In getPermissionInfosForGroup of Utils.java, there is a logic error. This could lead to local escalation of privilege with User execution privileges needed. User interaction is not needed for exploitation",
         "updated_versions": "10"
       },
       "1": {
