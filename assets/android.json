@@ -1,0 +1,149 @@
+{
+  "2020-11-01": {
+    "android_runtime": {
+      "0": {
+        "code": "CVE-2020-0409",
+        "commit_link": "https://android.googlesource.com/platform/system/core/+/bff51b88aaf96279c58edb812be0bda2fcaf4967",
+        "type": "EoP",
+        "severity": "High",
+        "updated_versions": "8.0, 8.1, 9, 10",
+        "detailed_description": "In create of FileMap.cpp, there is a possible out of bounds write due to an integer overflow. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation."
+      }
+    },
+    "framework": {
+      "0": {
+        "code": "CVE-2020-0441",
+        "commit_link": "https://android.googlesource.com/platform/frameworks/base/+/aaf6b40e1746db6189f6078dcd28d8f153a4cc50",
+        "type": "DoS",
+        "severity": "Critical",
+        "updated_versions": "8.0, 8.1, 9, 10, 11",
+        "detailed_description": "In Message and toBundle of Notification.java, there is a possible resource exhaustion due to improper input validation. This could lead to remote denial of service requiring a device reset to fix with no additional execution privileges needed. User interaction is not needed for exploitation."
+      },
+      "1": {
+        "code": "CVE-2020-0442",
+        "commit_link": "https://android.googlesource.com/platform/frameworks/base/+/aaf6b40e1746db6189f6078dcd28d8f153a4cc50",
+        "type": "DoS",
+        "severity": "Critical",
+        "updated_versions": "8.0, 8.1, 9, 10, 11",
+        "detailed_description": "In Message and toBundle of Notification.java, there is a possible UI slowdown or crash due to improper input validation. This could lead to remote denial of service if a malicious contact file is received, with no additional execution privileges needed. User interaction is not needed for exploitation."
+      },
+      "2": {
+        "code": "CVE-2020-0418",
+        "commit_link": "https://android.googlesource.com/platform/packages/apps/PackageInstaller/+/5148967312f4d59c456160463bbf120cf58abba2",
+        "type": "EoP",
+        "severity": "High",
+        "updated_versions": "10",
+        "detailed_description": "In getPermissionInfosForGroup of Utils.java, there is a logic error. This could lead to local escalation of privilege with User execution privileges needed. User interaction is not needed for exploitation."
+      }
+    },
+    "media_framework": {
+      "0": {
+        "code": "CVE-2020-0451",
+        "commit_link": "https://android.googlesource.com/platform/external/aac/+/ffff95538e9994d312ffdfbba94d88ed226ef7bf",
+        "type": "ID",
+        "severity": "High",
+        "updated_versions": "10, 11",
+        "detailed_description": "In sbrDecoder_AssignQmfChannels2SbrChannels of sbrdecoder.cpp, there is a possible out of bounds write due to a heap buffer overflow. This could lead to remote code execution with no additional execution privileges needed. User interaction is needed for exploitation."
+      },
+      "1": {
+        "code": "CVE-2020-0452",
+        "commit_link": "https://android.googlesource.com/platform/external/libexif/+/8e7345f3bc0bad06ac369d6cbc1124c8ceaf7d4b",
+        "type": "RCE",
+        "severity": "High",
+        "updated_versions": "8.0, 8.1, 9, 10, 11",
+        "detailed_description": "In exif_entry_get_value of exif-entry.c, there is a possible out of bounds write due to an integer overflow. This could lead to remote code execution if a third party app used this library to process remote image data with no additional execution privileges needed. User interaction is not needed for exploitation."
+      }
+    },
+    "system": {
+      "0": {
+        "code": "CVE-2020-0449",
+        "commit_link": "https://android.googlesource.com/platform/system/bt/+/46bdf4d4145ee022c48b71c30ba5fd45324f796a",
+        "type": "RCE",
+        "severity": "Critical",
+        "updated_versions": "8.0, 8.1, 9, 10, 11",
+        "detailed_description": "In btm_sec_disconnected of btm_sec.cc, there is a possible memory corruption due to a use after free. This could lead to remote code execution in the Bluetooth server with no additional execution privileges needed. User interaction is needed for exploitation."
+      },
+      "1": {
+        "code": "CVE-2020-12856",
+        "commit_link": "https://android.googlesource.com/platform/packages/apps/Bluetooth/+/81c1c7d2d1681434413a615eea532e85fee43db0",
+        "type": "EoP",
+        "severity": "High",
+        "updated_versions": "8.0, 8.1, 9, 10, 11",
+        "detailed_description": "OpenTrace, as used in COVIDSafe through v1.0.17, TraceTogether, ABTraceTogether, and other applications on iOS and Android, allows remote attackers to conduct long-term re-identification attacks and possibly have unspecified other impact, because of how Bluetooth is used."
+      }
+    },
+    "google_play_system_updates": {
+      "0": {
+        "name": "Permission Controller",
+        "code": "CVE-2020-0418",
+        "detailed_description": "In getPermissionInfosForGroup of Utils.java, there is a logic error. This could lead to local escalation of privilege with User execution privileges needed. User interaction is not needed for exploitation"
+        "updated_versions": "10"
+      },
+      "1": {
+        "name": "Media Codecs",
+        "code": "CVE-2020-0451",
+        "detailed_description": "In sbrDecoder_AssignQmfChannels2SbrChannels of sbrdecoder.cpp, there is a possible out of bounds write due to a heap buffer overflow. This could lead to remote code execution with no additional execution privileges needed. User interaction is needed for exploitation.",
+        "updated_versions": "8.0, 8.1, 9, 10, 11"
+      },
+      "2": {
+        "name": "DNS Resolver",
+        "code": "CVE-2020-0424",
+        "detailed_descruption": "In send_vc of res_send.cpp, there is a possible out of bounds read due to an incorrect bounds check. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
+        "updated_versions": "9, 10, 11"
+      }
+    },
+    "mediatek": {
+      "0": {
+        "code": "CVE-2020-0445",
+        "commit_link": "",
+        "type": "",
+        "severity": "High",
+        "updated_versions": "",
+        "detailed_description": "There is a possible out of bounds write due to a missing bounds check.",
+        "component": "Video Encoder"
+      },
+      "1": {
+        "code": "CVE-2020-0446",
+        "commit_link": "",
+        "type": "",
+        "severity": "High",
+        "updated_versions": "",
+        "detailed_description": "There is a possible out of bounds write due to a missing bounds check.",
+        "component": "Video Decoder"
+      },
+      "2": {
+        "code": "CVE-2020-0447",
+        "commit_link": "",
+        "type": "",
+        "severity": "High",
+        "updated_versions": "",
+        "detailed_description": "There is a possible out of bounds write due to a missing bounds check.",
+        "component": "ptp3"
+      }
+    },
+    "qualcomm": {
+      "0": {
+        "code": "CVE-2020-3639",
+        "commit_link": "",
+        "type": "",
+        "severity": "Critical",
+        "updated_versions": "",
+        "detailed_description": "When a non standard SIP sigcomp message is received from the network, then there may be chances of using more UDVM cycle or memory overflow",
+        "platform": "APQ8009, APQ8017, APQ8037, APQ8053, MDM9250, MDM9607, MDM9628, MDM9640, MDM9650, MSM8108, MSM8208, MSM8209, MSM8608, MSM8905, MSM8909, MSM8917, MSM8920, MSM8937, MSM8940, MSM8953, MSM8996AU, QCM4290, QCM6125, QCS410, QCS4290, QCS603, QCS605, QCS610, QCS6125, QM215, QSM8350, SA415M, SA6145P, SA6150P, SA6155P, SA8150P, SA8155, SA8155P, SA8195P, SC7180, SC8180X, SC8180X+SDX55, SC8180XP, SDA429W, SDA640, SDA660, SDA670, SDA845, SDA855, SDM1000, SDM429, SDM429W, SDM439, SDM450, SDM455, SDM630, SDM632, SDM636, SDM640, SDM660, SDM670, SDM710, SDM712, SDM845, SDM850, SDX24, SDX50M, SDX55, SDX55M, SM4125, SM4250, SM4250P, SM6115, SM6115P, SM6125, SM6150, SM6150P, SM6250, SM6250P, SM7125, SM7150, SM7150P, SM7250, SM7250P, SM8150, SM8150P, SM8350, SM8350P, SXR1120, SXR1130",
+        "component": "Closed-source component"
+      },
+      "1": {
+        "code": "CVE-2020-3632",
+        "commit_link": "",
+        "type": "",
+        "severity": "High",
+        "updated_versions": "",
+        "detailed_description": "Incorrect validation of ring context fetched from host memory can lead to memory overflow",
+        "platform": "QSM8350, SC7180, SDX55, SDX55M, SM6150, SM6250, SM6250P, SM7125, SM7150, SM7150P, SM7250, SM7250P, SM8150, SM8150P, SM8250, SM8350, SM8350P, SXR2130, SXR2130P",
+        "component": "Closed-source component"
+      }
+    }
+  },
+  "2020-10-01": {
+  }
+}
