@@ -13,7 +13,7 @@ class SecGuard extends StatelessWidget {
       title: 'SecGuard',
       home: notification ? NotificationPage() : Navigation(),
       theme: ThemeData(
-        primaryColor: Colors.white,  // appbar color
+        primaryColor: Color(0xff922b3e),  // appbar color
       ),
     );
   }

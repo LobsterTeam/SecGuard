@@ -35,7 +35,6 @@ class _NavigationState extends State<Navigation> {
             label: 'Feed',
           )
         ],
-        backgroundColor: Colors.amberAccent,
       ),
     );
   }

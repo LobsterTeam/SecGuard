@@ -13,6 +13,6 @@ AppBar app_bar(){
         )
       )
     ),
-    backgroundColor: Colors.amberAccent,
+    backgroundColor: Color(0xff922b3e),
   );
 }
