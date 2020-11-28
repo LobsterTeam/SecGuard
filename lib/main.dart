@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'navigation.dart';
-import 'status/status.dart';
+import "package:system_info/system_info.dart";
 
-void main() => runApp(SecGuard());
+void main() {
+  processorCheck();
+  runApp(SecGuard());
+}
 
 class SecGuard extends StatelessWidget {
   @override
@@ -14,5 +17,16 @@ class SecGuard extends StatelessWidget {
         primaryColor: Color(0xff922b3e), // appbar color
       ),
     );
+  }
+}
+
+void processorCheck() {
+  var processors = SysInfo.processors;
+  print("Number of processors    : ${processors.length}");
+  for (var processor in processors) {
+    print("  Architecture          : ${processor.architecture}");
+    print("  Name                  : ${processor.name}");
+    print("  Socket                : ${processor.socket}");
+    print("  Vendor                : ${processor.vendor}");
   }
 }
