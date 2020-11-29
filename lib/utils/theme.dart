@@ -41,4 +41,11 @@ class ThemeTextStyles {
       fontWeight: FontWeight.w600,
       fontSize: 16.0
   );
+
+  static const TextStyle homeButtonTitle = const TextStyle(
+      color: Colors.white,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w400,
+      fontSize: 18.0
+  );
 }
