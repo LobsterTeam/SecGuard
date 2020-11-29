@@ -1,6 +1,6 @@
-# :computer: 2020 Hackathor Contest Project
+# :computer: Hackathor 2020 Contest Project
  
-This repository includes source code of the **SecGuard** Android application's which developed for [2020 Hackathor Contest Project](https://www.hackathor.net/).
+This repository includes source code of the **SecGuard** Android application which is developed for [Hackathor 2020 Contest](https://www.hackathor.net/).
 
 ## Dependencies 
 
@@ -12,6 +12,6 @@ This repository includes source code of the **SecGuard** Android application's w
 
 ## Contributors
 
-- **Oğuz Bakır** : [Mail](mailto:oguz298@hacettepe.edu.tr) - [GitHub](https://github.com/oguzbakir) - [LinkedIn](https://www.linkedin.com/in/oguzbakir/)
+- **Oğuz Bakır** : [Mail](mailto:oguzbakir0@gmail.com) - [GitHub](https://github.com/oguzbakir) - [LinkedIn](https://www.linkedin.com/in/oguzbakir/)
 - **Fidan Samet** : [Mail](mailto:fidansamet@hacettepe.edu.tr) - [GitHub](https://github.com/fidansamet) - [LinkedIn](https://tr.linkedin.com/in/fidansamet) 
 - **Gökhan Özeloğlu** : [Mail](mailto:gozeloglu@gmail.com) - [GitHub](https://github.com/gozeloglu) - [LinkedIn](https://www.linkedin.com/in/gokhanozeloglu/)
