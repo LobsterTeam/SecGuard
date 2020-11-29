@@ -9,7 +9,6 @@ class SupportTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container(
       child: new ListView.builder(
-        itemExtent: 200.0,
         itemCount: 3,
         itemBuilder: (_, index) => createCard(index),
       ),
@@ -18,8 +17,8 @@ class SupportTab extends StatelessWidget {
 
   Container createCard(int type) {
     return new Container(
-      height: 200.0,
-      margin: const EdgeInsets.only(top: 20.0, bottom: 8.0),
+      height: type == 2 ? 150.0 : 180.0,
+      margin: const EdgeInsets.only(top: 12.0, bottom: 12.0),
       child: new Stack(
         children: <Widget>[
           Container(
@@ -58,12 +57,11 @@ class SupportTab extends StatelessWidget {
         width: 270.0,
         height: 1.0,
       ),
-      new Padding(padding: EdgeInsets.only(top: 5.0)),
+      new Padding(padding: EdgeInsets.only(top: 10.0)),
       new Row(
         children: <Widget>[
           Flexible(
-              child:
-              Text(
+              child: Text(
             "\u2022 You can always call or mail your vendor for security updates",
             textDirection: TextDirection.ltr,
             textAlign: TextAlign.left,
@@ -86,86 +84,6 @@ class SupportTab extends StatelessWidget {
             textAlign: TextAlign.left,
             style: ThemeTextStyles.rowValue,
           )
-        ],
-      ),
-      new Padding(
-        padding: EdgeInsets.only(top: 5.0),
-      ),
-      new Row(
-        children: <Widget>[
-          Text(
-            "Phone",
-            textAlign: TextAlign.left,
-            style: ThemeTextStyles.rowKey,
-          ),
-          Padding(padding: EdgeInsets.only(right: 15.0)),
-          Text(
-            "+90 565 654 41 23",
-            textDirection: TextDirection.ltr,
-            textAlign: TextAlign.left,
-            style: ThemeTextStyles.rowValue,
-          )
-        ],
-      ),
-      new Align(
-        alignment: Alignment.bottomRight,
-        heightFactor: 0.5,
-        child: FlatButton(
-          onPressed: () {},
-            color: Colors.transparent,
-          child: Column( // Replace with a Row for horizontal icon + text
-            children: <Widget>[
-              Icon(Icons.phone, color: Colors.white,)
-            ],
-          )
-        ),
-      )
-    ];
-  }
-
-  List<Widget> callWidgets() {
-    return <Widget>[
-      new Text("Call Us",
-          style: ThemeTextStyles.homeCardTitle),
-      new Container(
-        color: Colors.white,
-        width: 70.0,
-        height: 1.0,
-      ),
-      new Padding(padding: EdgeInsets.only(top: 5.0)),
-      new Row(
-        children: <Widget>[
-          Flexible(
-              child: Text(
-                "\u2022 Ask anything about security questions",
-                textDirection: TextDirection.ltr,
-                textAlign: TextAlign.left,
-                style: ThemeTextStyles.rowKey,
-              ))
-        ],
-      ),
-      new Padding(padding: EdgeInsets.only(top: 5.0)),
-      new Row(
-        children: <Widget>[
-          Flexible(
-              child: Text(
-                "\u2022 Purchase security tests",
-                textDirection: TextDirection.ltr,
-                textAlign: TextAlign.left,
-                style: ThemeTextStyles.rowKey,
-              ))
-        ],
-      ),
-      new Padding(padding: EdgeInsets.only(top: 5.0)),
-      new Row(
-        children: <Widget>[
-          Flexible(
-              child: Text(
-                "\u2022 Connect to vendor specialists",
-                textDirection: TextDirection.ltr,
-                textAlign: TextAlign.left,
-                style: ThemeTextStyles.rowKey,
-              ))
         ],
       ),
       new Padding(padding: EdgeInsets.only(top: 5.0)),
@@ -191,35 +109,37 @@ class SupportTab extends StatelessWidget {
         child: FlatButton(
             onPressed: () {},
             color: Colors.transparent,
-            child: Column( // Replace with a Row for horizontal icon + text
+            child: Column(
+              // Replace with a Row for horizontal icon + text
               children: <Widget>[
-                Icon(Icons.phone, color: Colors.white,)
+                Icon(
+                  Icons.phone,
+                  color: Colors.white,
+                )
               ],
-            )
-        ),
+            )),
       )
     ];
   }
 
-  List<Widget> mailWidgets() {
+  List<Widget> callWidgets() {
     return <Widget>[
-      new Text("Mail Us",
-          style: ThemeTextStyles.homeCardTitle),
+      new Text("Call Us", style: ThemeTextStyles.homeCardTitle),
       new Container(
         color: Colors.white,
         width: 70.0,
         height: 1.0,
       ),
-      new Padding(padding: EdgeInsets.only(top: 5.0)),
+      new Padding(padding: EdgeInsets.only(top: 10.0)),
       new Row(
         children: <Widget>[
           Flexible(
               child: Text(
-                "\u2022 Ask anything about security questions",
-                textDirection: TextDirection.ltr,
-                textAlign: TextAlign.left,
-                style: ThemeTextStyles.rowKey,
-              ))
+            "\u2022 Ask anything about security questions",
+            textDirection: TextDirection.ltr,
+            textAlign: TextAlign.left,
+            style: ThemeTextStyles.rowKey,
+          ))
         ],
       ),
       new Padding(padding: EdgeInsets.only(top: 5.0)),
@@ -227,11 +147,91 @@ class SupportTab extends StatelessWidget {
         children: <Widget>[
           Flexible(
               child: Text(
-                "\u2022 Purchase security tests",
-                textDirection: TextDirection.ltr,
-                textAlign: TextAlign.left,
-                style: ThemeTextStyles.rowKey,
-              ))
+            "\u2022 Purchase security tests",
+            textDirection: TextDirection.ltr,
+            textAlign: TextAlign.left,
+            style: ThemeTextStyles.rowKey,
+          ))
+        ],
+      ),
+      new Padding(padding: EdgeInsets.only(top: 5.0)),
+      new Row(
+        children: <Widget>[
+          Flexible(
+              child: Text(
+            "\u2022 Connect to vendor specialists",
+            textDirection: TextDirection.ltr,
+            textAlign: TextAlign.left,
+            style: ThemeTextStyles.rowKey,
+          ))
+        ],
+      ),
+      new Padding(padding: EdgeInsets.only(top: 5.0)),
+      new Row(
+        children: <Widget>[
+          Text(
+            "Phone",
+            textAlign: TextAlign.left,
+            style: ThemeTextStyles.rowKey,
+          ),
+          Padding(padding: EdgeInsets.only(right: 15.0)),
+          Text(
+            "+90 565 654 41 23",
+            textDirection: TextDirection.ltr,
+            textAlign: TextAlign.left,
+            style: ThemeTextStyles.rowValue,
+          )
+        ],
+      ),
+      new Align(
+        alignment: Alignment.bottomRight,
+        heightFactor: 0.5,
+        child: FlatButton(
+            onPressed: () {},
+            color: Colors.transparent,
+            child: Column(
+              // Replace with a Row for horizontal icon + text
+              children: <Widget>[
+                Icon(
+                  Icons.phone,
+                  color: Colors.white,
+                )
+              ],
+            )),
+      )
+    ];
+  }
+
+  List<Widget> mailWidgets() {
+    return <Widget>[
+      new Text("Mail Us", style: ThemeTextStyles.homeCardTitle),
+      new Container(
+        color: Colors.white,
+        width: 70.0,
+        height: 1.0,
+      ),
+      new Padding(padding: EdgeInsets.only(top: 10.0)),
+      new Row(
+        children: <Widget>[
+          Flexible(
+              child: Text(
+            "\u2022 Ask anything about security questions",
+            textDirection: TextDirection.ltr,
+            textAlign: TextAlign.left,
+            style: ThemeTextStyles.rowKey,
+          ))
+        ],
+      ),
+      new Padding(padding: EdgeInsets.only(top: 5.0)),
+      new Row(
+        children: <Widget>[
+          Flexible(
+              child: Text(
+            "\u2022 Purchase security tests",
+            textDirection: TextDirection.ltr,
+            textAlign: TextAlign.left,
+            style: ThemeTextStyles.rowKey,
+          ))
         ],
       ),
       new Padding(padding: EdgeInsets.only(top: 5.0)),
@@ -257,13 +257,16 @@ class SupportTab extends StatelessWidget {
         child: FlatButton(
             onPressed: () {},
             color: Colors.transparent,
-            child: Column( // Replace with a Row for horizontal icon + text
+            child: Column(
+              // Replace with a Row for horizontal icon + text
               children: <Widget>[
-                Icon(Icons.email_outlined, color: Colors.white,)
+                Icon(
+                  Icons.email_outlined,
+                  color: Colors.white,
+                )
               ],
-            )
-        ),
-      )
+            )),
+      ),
     ];
   }
 
@@ -285,11 +288,9 @@ class SupportTab extends StatelessWidget {
       ],
     );
   }
-
-
 }
 
-class MyBullet extends StatelessWidget{
+class MyBullet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
