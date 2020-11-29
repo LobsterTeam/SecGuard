@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'theme.dart';
 
-AppBar app_bar(){
+AppBar app_bar() {
   return AppBar(
-    title: Center(
-      child: Text(
+      title: Text(
         'SecGuard',
         style: ThemeTextStyles.appBarTitle,
-      )
-    ),
-    backgroundColor: ThemeColors.redViolet,
-  );
+      ),
+      backgroundColor: ThemeColors.redViolet,
+      centerTitle: true);
 }
