@@ -8,10 +8,7 @@ This repository includes source code of the **SecGuard** Android application's w
 - `Android SDK` - 29.0.2
 
 ## Application's UI 
-<img src="screenshots/home.png" width=144 height=288/>
-<img src="screenshots/status.png" width=144 height=288/>
-<img src="screenshots/status_details.png" width=144 height=288/>
-<img src="screenshots/support.png" width=144 height=288/>
+<img src="screenshots/home.png" width=144 height=288/>     <img src="screenshots/status.png" width=144 height=288/>     <img src="screenshots/status_details.png" width=144 height=288/>     <img src="screenshots/support.png" width=144 height=288/>
 
 ## Contributors
 
