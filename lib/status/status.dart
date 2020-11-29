@@ -39,81 +39,87 @@ class _StatusState extends State<StatusTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: FutureBuilder(
-        future:
-            DefaultAssetBundle.of(context).loadString("assets/android.json"),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            /** system - 0xFFFF0000
-                    google_play_system_updates - 0xFFFFA500
-                    android_runtime - 0xFFffae42
-                    mediatek veya qualcomm - 0xFFFFFF00
-                    framework - 0xFF9acd32
-                    media_framework - 0xFF008000
-                 * */
-            final parsed = jsonDecode(snapshot.data);
-            List<Map<String, int>> errorTypeMaps = List();
-            List<String> titles = [
-              "system",
-              "google_play_system_updates",
-              "android_runtime",
-              "mediatek",
-              "qualcomm",
-              "framework",
-              "media_framework"
-            ];
-            List<Color> colorList = [
-              ThemeColors.redCard,
-              ThemeColors.orangeCard,
-              ThemeColors.yellowOrangeCard,
-              ThemeColors.yellowCard,
-              ThemeColors.yellowCard, // TODO delete
-              ThemeColors.yellowGreenCard,
-              ThemeColors.GreenCard
-            ];
+      body: Center(
+        child: FutureBuilder(
+          future:
+              DefaultAssetBundle.of(context).loadString("assets/android.json"),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              /** system - 0xFFFF0000
+                  google_play_system_updates - 0xFFFFA500
+                  android_runtime - 0xFFffae42
+                  mediatek veya qualcomm - 0xFFFFFF00
+                  framework - 0xFF9acd32
+                  media_framework - 0xFF008000
+               * */
+              final parsed = jsonDecode(snapshot.data);
+              List<Map<String, int>> errorTypeMaps = List();
+              List<String> titles = [
+                "system",
+                "google_play_system_updates",
+                "android_runtime",
+                "mediatek",
+                "qualcomm",
+                "framework",
+                "media_framework"
+              ];
+              List<Color> colorList = [
+                ThemeColors.redCard,
+                ThemeColors.orangeCard,
+                ThemeColors.yellowOrangeCard,
+                ThemeColors.yellowCard,
+                ThemeColors.yellowCard, // TODO delete
+                ThemeColors.yellowGreenCard,
+                ThemeColors.GreenCard
+              ];
 
-            for (int i = 0; i < parsed["2020-11-01"].length; i++) {
-              int highCount = 0;
-              int criticalCount = 0;
-              int total = 0;
-              String title = titles[i];
+              for (int i = 0; i < parsed["2020-11-01"].length; i++) {
+                int highCount = 0;
+                int criticalCount = 0;
+                int total = 0;
+                String title = titles[i];
 
-              for (int j = 0; j < parsed["2020-11-01"][title].length; j++) {
-                String index = j.toString();
-                if (parsed["2020-11-01"][title][index]["severity"] ==
-                    "Critical") {
-                  criticalCount++;
-                } else if (parsed["2020-11-01"][title][index]["severity"] ==
-                    "High") {
-                  highCount++;
-                } else {
-                  total++;
+                for (int j = 0; j < parsed["2020-11-01"][title].length; j++) {
+                  String index = j.toString();
+                  if (parsed["2020-11-01"][title][index]["severity"] ==
+                      "Critical") {
+                    criticalCount++;
+                  } else if (parsed["2020-11-01"][title][index]["severity"] ==
+                      "High") {
+                    highCount++;
+                  } else {
+                    total++;
+                  }
                 }
+                Map<String, int> map = {
+                  "Critical": criticalCount,
+                  "High": highCount,
+                  "Total": total,
+                };
+                errorTypeMaps.add(map);
               }
-              Map<String, int> map = {
-                "Critical": criticalCount,
-                "High": highCount,
-                "Total": total,
-              };
-              errorTypeMaps.add(map);
-            }
 
-            return Container(
-              child: new ListView.builder(
-                // TODO itemCount will be 6 after mediatek vs qualconn info
-                itemCount: 7,
-                itemBuilder: (_, index) => createCard(
-                    errorTypeMaps[index], titles[index], colorList[index]),
-              ),
-            );
-          } else {
-            // TODO No data message can be added here
-          }
-          return Container();
-        },
+              return Container(
+                child: new ListView.builder(
+                  // TODO itemCount will be 6 after mediatek vs qualconn info
+                  itemCount: 7,
+                  itemBuilder: (_, index) => createCard(
+                      errorTypeMaps[index], titles[index], colorList[index]),
+                ),
+              );
+            } else {
+              // TODO No data message can be added here
+            }
+            return Container();
+          },
+        ),
       ),
-    ));
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {}, // TODO: update
+        child: Icon(Icons.download_rounded),
+        backgroundColor: ThemeColors.redViolet,
+      ),
+    );
   }
 
   Container createCard(Map<String, int> data, String title, Color color) {
