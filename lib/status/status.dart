@@ -4,16 +4,18 @@ import 'package:sec_guard/status/status_details.dart';
 import 'package:sec_guard/utils/theme.dart';
 
 class StatusTab extends StatefulWidget {
+  final String androidVersion;
+  final String vendorPatchLevel;
+  final String androidPathLevel;
+  final Map<String, String> deviceInfoMap;
+
   StatusTab(
       {Key key,
       this.androidVersion,
       this.vendorPatchLevel,
-      this.androidPathLevel})
+      this.androidPathLevel,
+      this.deviceInfoMap})
       : super(key: key);
-
-  final String androidVersion;
-  final String vendorPatchLevel;
-  final String androidPathLevel;
 
   @override
   State<StatefulWidget> createState() {

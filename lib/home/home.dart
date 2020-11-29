@@ -1,80 +1,42 @@
 import 'package:flutter/material.dart';
 import '../utils/theme.dart';
-import 'package:device_info/device_info.dart';
 
-class HomeTab extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _HomeTabState();
-  }
-}
+class HomeTab extends StatelessWidget {
+  final Map<String, String> deviceInfoMap;
 
-class _HomeTabState extends State<HomeTab> {
-  bool loading = true;
-  Map<String, String> deviceInfoMap = {};
-
-  @override
-  void initState() {
-    getDeviceInfo();
-  }
+  HomeTab({Key key, this.deviceInfoMap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (loading) {
-      return Center(
-          child: CircularProgressIndicator(
-              valueColor:
-                  AlwaysStoppedAnimation<Color>(ThemeColors.redViolet)));
-    } else {
-      return new Container(
-          child: new Stack(
-        children: <Widget>[
-          ListView.builder(
-            itemCount: 2,
-            itemBuilder: (_, index) => createCard(index),
-          ),
-          Container(
-            margin: const EdgeInsets.all(15.0),
-            child: Align(
-              alignment: FractionalOffset.bottomCenter,
-              child: RaisedButton.icon(
-                onPressed: () {
-                  print('button click'); // TODO
-                },
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                label: Text('Check for Updates',
-                    style: ThemeTextStyles.homeButtonTitle),
-                icon: Icon(
-                  Icons.download_rounded,
-                  color: Colors.white,
-                ),
-                color: ThemeColors.redViolet,
+    return new Container(
+        child: new Stack(
+      children: <Widget>[
+        ListView.builder(
+          itemCount: 2,
+          itemBuilder: (_, index) => createCard(index),
+        ),
+        Container(
+          margin: const EdgeInsets.all(15.0),
+          child: Align(
+            alignment: FractionalOffset.bottomCenter,
+            child: RaisedButton.icon(
+              onPressed: () {
+                print('button click'); // TODO
+              },
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              label: Text('Check for Updates',
+                  style: ThemeTextStyles.homeButtonTitle),
+              icon: Icon(
+                Icons.download_rounded,
+                color: Colors.white,
               ),
+              color: ThemeColors.redViolet,
             ),
           ),
-        ],
-      ));
-    }
-  }
-
-  Future<Map<String, String>> getDeviceInfo() async {
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
-
-    deviceInfoMap["manufacturer"] = androidDeviceInfo.manufacturer;
-    deviceInfoMap["model"] = androidDeviceInfo.model;
-    deviceInfoMap["board"] = androidDeviceInfo.board;
-    deviceInfoMap["hardware"] = androidDeviceInfo.hardware;
-    deviceInfoMap["version"] = androidDeviceInfo.version.release;
-    deviceInfoMap["API"] = androidDeviceInfo.version.sdkInt.toString();
-    deviceInfoMap["secPatch"] = androidDeviceInfo.version.securityPatch;
-    deviceInfoMap["googlePlaySecPatch"] =
-        androidDeviceInfo.version.securityPatch; // TODO
-
-    setState(() {
-      loading = false;
-    });
+        ),
+      ],
+    ));
   }
 
   Container createCard(int type) {
