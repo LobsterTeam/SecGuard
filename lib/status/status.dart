@@ -62,13 +62,13 @@ class _StatusState extends State<StatusTab> {
               "media_framework"
             ];
             List<Color> colorList = [
-              Color(0xFFFF0000),
-              Color(0xFFFFA500),
-              Color(0xFFffae42),
-              Color(0xffffdd1f),
-              Color(0xffffdd1f),
-              Color(0xFF9acd32),
-              Color(0xFF008000),
+              ThemeColors.redCard,
+              ThemeColors.orangeCard,
+              ThemeColors.yellowOrangeCard,
+              ThemeColors.yellowCard,
+              ThemeColors.yellowCard, // TODO delete
+              ThemeColors.yellowGreenCard,
+              ThemeColors.GreenCard
             ];
 
             for (int i = 0; i < parsed["2020-11-01"].length; i++) {
@@ -155,9 +155,10 @@ class _StatusState extends State<StatusTab> {
       String title, String criticalValue, String highValue) {
     return <Widget>[
       new Text(titleNames[title], style: ThemeTextStyles.homeCardTitle),
+      new Padding(padding: EdgeInsets.only(top: 5.0)),
       new Container(
         color: Colors.white,
-        width: 100.0,
+        width: 50.0,
         height: 1.0,
       ),
       new Padding(padding: EdgeInsets.only(top: 10.0)),
