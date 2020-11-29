@@ -23,7 +23,6 @@ class StatusTab extends StatefulWidget {
 
 class _StatusState extends State<StatusTab> {
   // TODO Mediatek or Qualcomm will be removed wrt phone type
-  // TODO There is not severity in "google_play_system_updates"
 
   Map<String, String> titleNames = {
     "system": "System",
@@ -97,11 +96,11 @@ class _StatusState extends State<StatusTab> {
               };
               errorTypeMaps.add(map);
             }
-            print(errorTypeMaps);
-            print(parsed["2020-11-01"].length);
+
             return Container(
               child: new ListView.builder(
-                itemCount: 6,
+                // TODO itemCount will be 6 after mediatek vs qualconn info
+                itemCount: 7,
                 itemBuilder: (_, index) => createCard(
                     errorTypeMaps[index], titles[index], colorList[index]),
               ),
@@ -128,12 +127,13 @@ class _StatusState extends State<StatusTab> {
                 shape: BoxShape.rectangle,
                 borderRadius: new BorderRadius.circular(8.0)),
             child: FlatButton(
-              // TODO Go to details page
               onPressed: () {
                 Navigator.push(
                     context,
                     new MaterialPageRoute(
-                        builder: (context) => StatusDetails()));
+                        builder: (context) => StatusDetails(
+                              errorType: title,
+                            )));
               },
               child: new Container(
                 margin: const EdgeInsets.only(top: 10.0, left: 10.0),

@@ -17,6 +17,7 @@ class StatusDetails extends StatefulWidget {
 }
 
 class _StatusDetailsState extends State<StatusDetails> {
+  // TODO Control the Android version
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,41 +28,51 @@ class _StatusDetailsState extends State<StatusDetails> {
               DefaultAssetBundle.of(context).loadString("assets/android.json"),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              /// No problem
               final parsed = jsonDecode(snapshot.data);
-
-              /// TODO "android_runtime will be passed to this function from previous function
-              //print(parsed["2020-11-01"]["android_runtime"]);
               List<Map<String, String>> errorList = List();
-              print(parsed["2020-11-01"][widget.errorType].length);
 
               for (int i = 0;
                   i < parsed["2020-11-01"][widget.errorType].length;
                   i++) {
-                print(parsed["2020-11-01"][widget.errorType][i.toString()]
-                    ["code"]);
-                Map<String, String> map = {
-                  "code": parsed["2020-11-01"][widget.errorType][i.toString()]
-                      ["code"],
-                  "details": "• Type: " +
-                      parsed["2020-11-01"][widget.errorType][i.toString()]
-                          ["type"] +
-                      "\n• Severity: " +
-                      parsed["2020-11-01"][widget.errorType][i.toString()]
-                          ["severity"] +
-                      "\n• Updated Version: " +
-                      parsed["2020-11-01"][widget.errorType][i.toString()]
-                          ["updated_versions"] +
-                      "\n• Description: " +
-                      parsed["2020-11-01"][widget.errorType][i.toString()]
-                          ["detailed_description"],
-                };
-                errorList.add(map);
+                if (widget.errorType != "google_play_system_updates") {
+                  Map<String, String> map = {
+                    "code": parsed["2020-11-01"][widget.errorType][i.toString()]
+                        ["code"],
+                    "details": "Type: " +
+                        parsed["2020-11-01"][widget.errorType][i.toString()]
+                            ["type"] +
+                        "\nSeverity: " +
+                        parsed["2020-11-01"][widget.errorType][i.toString()]
+                            ["severity"] +
+                        "\nUpdated Version: " +
+                        parsed["2020-11-01"][widget.errorType][i.toString()]
+                            ["updated_versions"] +
+                        "\nDescription: " +
+                        parsed["2020-11-01"][widget.errorType][i.toString()]
+                            ["detailed_description"],
+                  };
+                  errorList.add(map);
+                } else if (widget.errorType == "google_play_system_updates") {
+                  Map<String, String> map = {
+                    "code": parsed["2020-11-01"][widget.errorType][i.toString()]
+                            ["name"] +
+                        " - " +
+                        parsed["2020-11-01"][widget.errorType][i.toString()]
+                            ["code"],
+                    "details": "Updated Version: " +
+                        parsed["2020-11-01"][widget.errorType][i.toString()]
+                            ["updated_versions"] +
+                        "\nDescription: " +
+                        parsed["2020-11-01"][widget.errorType][i.toString()]
+                            ["detailed_description"],
+                  };
+                  errorList.add(map);
+                }
               }
 
               return Container(
                 child: new ListView.builder(
-                  itemExtent: 300.0,
+                  itemExtent: 280.0, //300.0,
                   itemCount: errorList.length,
                   itemBuilder: (_, index) => createCard(
                       errorList[index]["code"],
@@ -86,7 +97,7 @@ class _StatusDetailsState extends State<StatusDetails> {
       child: new Stack(
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.only(),
+            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
             decoration: new BoxDecoration(
                 color: color,
                 shape: BoxShape.rectangle,
@@ -126,34 +137,8 @@ class _StatusDetailsState extends State<StatusDetails> {
                 fontSize: 16.0),
           )),
           Padding(padding: EdgeInsets.only(right: 5.0)),
-          /*Text(
-            criticalValue,
-            textDirection: TextDirection.ltr,
-            textAlign: TextAlign.left,
-            style: ThemeTextStyles.rowValue,
-          )*/
         ],
       ),
-      /*new Padding(padding: EdgeInsets.only(top: 5.0)),
-      new Row(
-        children: <Widget>[
-          Text(
-            "• High:\t\t\t\t\t",
-            textAlign: TextAlign.left,
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 16.0),
-          ),
-          Padding(padding: EdgeInsets.only(right: 15.0)),
-          Text(
-            highValue,
-            textDirection: TextDirection.ltr,
-            textAlign: TextAlign.left,
-            style: ThemeTextStyles.rowValue,
-          )
-        ],
-      )*/
     ];
   }
 }
