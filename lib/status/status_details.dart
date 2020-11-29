@@ -89,7 +89,7 @@ class _StatusDetailsState extends State<StatusDetails> {
 
   Container createCard(String title, String details, Color color) {
     return new Container(
-      height: 290.0,
+      height: 300.0,
       margin: const EdgeInsets.only(top: 12.0, bottom: 12.0),
       child: new Stack(
         children: <Widget>[
