@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:sec_guard/utils/app_bar.dart';
+import 'package:sec_guard/status/status_details.dart';
 import 'package:sec_guard/utils/theme.dart';
 
 class StatusTab extends StatefulWidget {
@@ -38,13 +38,12 @@ class _StatusState extends State<StatusTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: Colors.black87,
         body: Center(
-      child: FutureBuilder(
-        future:
+          child: FutureBuilder(
+            future:
             DefaultAssetBundle.of(context).loadString("assets/android.json"),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
             /** system - 0xFFFF0000
                     google_play_system_updates - 0xFFFFA500
                     android_runtime - 0xFFffae42
@@ -131,7 +130,12 @@ class _StatusState extends State<StatusTab> {
                 borderRadius: new BorderRadius.circular(8.0)),
             child: FlatButton(
               // TODO Go to details page
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => StatusDetails()));
+              },
               child: new Container(
                 margin: const EdgeInsets.only(top: 16.0, left: 16.0),
                 constraints: new BoxConstraints.expand(),
