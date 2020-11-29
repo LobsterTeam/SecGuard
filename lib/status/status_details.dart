@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sec_guard/utils/app_bar.dart';
@@ -7,7 +6,6 @@ import 'package:sec_guard/utils/theme.dart';
 
 class StatusDetails extends StatefulWidget {
   StatusDetails({Key key, this.errorType}) : super(key: key);
-
   final String errorType;
 
   @override
@@ -72,7 +70,6 @@ class _StatusDetailsState extends State<StatusDetails> {
 
               return Container(
                 child: new ListView.builder(
-                  itemExtent: 280.0, //300.0,
                   itemCount: errorList.length,
                   itemBuilder: (_, index) => createCard(
                       errorList[index]["code"],
@@ -92,8 +89,8 @@ class _StatusDetailsState extends State<StatusDetails> {
 
   Container createCard(String title, String details, Color color) {
     return new Container(
-      height: 120.0,
-      margin: const EdgeInsets.only(top: 20.0),
+      height: 290.0,
+      margin: const EdgeInsets.only(top: 12.0, bottom: 12.0),
       child: new Stack(
         children: <Widget>[
           Container(
@@ -119,24 +116,19 @@ class _StatusDetailsState extends State<StatusDetails> {
   List<Widget> customCard(String title, String details) {
     return <Widget>[
       new Text(title, style: ThemeTextStyles.homeCardTitle),
+      new Padding(padding: EdgeInsets.only(top: 5.0)),
       new Container(
         color: Colors.white,
-        width: 100.0,
+        width: 50.0,
         height: 1.0,
       ),
-      new Padding(padding: EdgeInsets.only(top: 5.0)),
+      new Padding(padding: EdgeInsets.only(top: 10.0)),
       new Row(
         children: <Widget>[
           Flexible(
-              child: Text(
-            details,
-            textAlign: TextAlign.left,
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 16.0),
-          )),
-          Padding(padding: EdgeInsets.only(right: 5.0)),
+              child: Text(details,
+                  textAlign: TextAlign.left, style: ThemeTextStyles.errorText)),
+          Padding(padding: EdgeInsets.only(right: 16.0)),
         ],
       ),
     ];

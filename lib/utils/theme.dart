@@ -39,4 +39,7 @@ class ThemeTextStyles {
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w400,
       fontSize: 18.0);
+
+  static const TextStyle errorText = const TextStyle(
+      color: Colors.white, fontWeight: FontWeight.w400, fontSize: 17.0);
 }
