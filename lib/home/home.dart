@@ -79,7 +79,7 @@ class _HomeTabState extends State<HomeTab> {
 
   Container createCard(int type) {
     return new Container(
-      height: type == 0 ? 160.0 : 140.0,
+      height: type == 0 ? 170.0 : 190.0,
       margin: const EdgeInsets.only(top: 20.0, bottom: 8.0),
       child: new Stack(
         children: <Widget>[
@@ -137,7 +137,11 @@ class _HomeTabState extends State<HomeTab> {
       createRow("Android Security Patch", deviceInfoMap["secPatch"]),
       new Padding(padding: EdgeInsets.only(top: 5.0)),
       createRow(
-          "Google Play Security Patch", deviceInfoMap["googlePlaySecPatch"])
+          "Google Play Security Patch", deviceInfoMap["googlePlaySecPatch"]),
+      new Padding(padding: EdgeInsets.only(top: 5.0)),
+      createRow("SafetyNet", "Pass"), // TODO
+      new Padding(padding: EdgeInsets.only(top: 5.0)),
+      createRow("Encryption", "Hardware Backed"), // TODO
     ];
   }
 

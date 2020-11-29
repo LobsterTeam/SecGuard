@@ -39,11 +39,11 @@ class _StatusState extends State<StatusTab> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-          child: FutureBuilder(
-            future:
+      child: FutureBuilder(
+        future:
             DefaultAssetBundle.of(context).loadString("assets/android.json"),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
             /** system - 0xFFFF0000
                     google_play_system_updates - 0xFFFFA500
                     android_runtime - 0xFFffae42
@@ -101,7 +101,6 @@ class _StatusState extends State<StatusTab> {
             print(parsed["2020-11-01"].length);
             return Container(
               child: new ListView.builder(
-                itemExtent: 160.0,
                 itemCount: 6,
                 itemBuilder: (_, index) => createCard(
                     errorTypeMaps[index], titles[index], colorList[index]),
@@ -119,7 +118,7 @@ class _StatusState extends State<StatusTab> {
   Container createCard(Map<String, int> data, String title, Color color) {
     return new Container(
       height: 120.0,
-      margin: const EdgeInsets.only(top: 20.0, bottom: 8.0),
+      margin: const EdgeInsets.only(top: 12.0, bottom: 12.0),
       child: new Stack(
         children: <Widget>[
           Container(
@@ -137,7 +136,7 @@ class _StatusState extends State<StatusTab> {
                         builder: (context) => StatusDetails()));
               },
               child: new Container(
-                margin: const EdgeInsets.only(top: 16.0, left: 16.0),
+                margin: const EdgeInsets.only(top: 10.0, left: 10.0),
                 constraints: new BoxConstraints.expand(),
                 child: new Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,11 +160,11 @@ class _StatusState extends State<StatusTab> {
         width: 100.0,
         height: 1.0,
       ),
-      new Padding(padding: EdgeInsets.only(top: 5.0)),
+      new Padding(padding: EdgeInsets.only(top: 10.0)),
       new Row(
         children: <Widget>[
           Text(
-            "• Critical:\t",
+            "Critical\t",
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.white,
@@ -185,7 +184,7 @@ class _StatusState extends State<StatusTab> {
       new Row(
         children: <Widget>[
           Text(
-            "• High:\t\t\t\t\t",
+            "High\t\t\t\t\t",
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.white,
