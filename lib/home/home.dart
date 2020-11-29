@@ -27,11 +27,34 @@ class _HomeTabState extends State<HomeTab> {
                   AlwaysStoppedAnimation<Color>(ThemeColors.redViolet)));
     } else {
       return new Container(
-        child: new ListView.builder(
-          itemCount: 2,
-          itemBuilder: (_, index) => createCard(index),
-        ),
-      );
+          child: new Stack(
+        children: <Widget>[
+          ListView.builder(
+            itemCount: 2,
+            itemBuilder: (_, index) => createCard(index),
+          ),
+          Container(
+            margin: const EdgeInsets.all(15.0),
+            child: Align(
+              alignment: FractionalOffset.bottomCenter,
+              child: RaisedButton.icon(
+                onPressed: () {
+                  print('button click'); // TODO
+                },
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                label: Text('Check for Updates',
+                    style: ThemeTextStyles.homeButtonTitle),
+                icon: Icon(
+                  Icons.download_rounded,
+                  color: Colors.white,
+                ),
+                color: ThemeColors.redViolet,
+              ),
+            ),
+          ),
+        ],
+      ));
     }
   }
 
@@ -47,7 +70,7 @@ class _HomeTabState extends State<HomeTab> {
     deviceInfoMap["API"] = androidDeviceInfo.version.sdkInt.toString();
     deviceInfoMap["secPatch"] = androidDeviceInfo.version.securityPatch;
     deviceInfoMap["googlePlaySecPatch"] =
-        androidDeviceInfo.version.securityPatch;
+        androidDeviceInfo.version.securityPatch; // TODO
 
     setState(() {
       loading = false;
